@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var moneyPerHour = 13;
 var currency = "€";
 
