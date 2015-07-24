@@ -15,4 +15,12 @@ Earned money: 60.32€
 ```
 
 ## Customization
-The hourly rate can be adapted in the code: just set ```var moneyPerHour = XX;``` to whatever you earn in an hour.
+The hourly rate can be adapted in the code: just set `var moneyPerHour = XX;` to whatever you earn in an hour.
+
+##How to get global access to the script
+* Clone the repository
+* Create a symlink:
+    * From `hourlyPay.js` in the cloned repo 
+    * To your local bin environment thingy thing (On Mac OS: `/usr/local/bin`)
+    * Example: `ln -s ~/Repositories/hourlyPay.js/hourlyPay.js /usr/local/bin/hourlyPay`
+* You now can access it everywhere by typing `hourlyPay HH:MM`
