@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 
+//OPTIONS - check in and lunch break can be passed as arguments too
 var moneyPerHour = 13;
 var currency = "€";
+var passedCheckInTiny = "09:00";
+var lunchBreak = 30;
 
 //get checkin time from user argument
-var passedCheckInTiny = "";
 process.argv.forEach(function(val, index, array) {
 	if (index === 2) {
 		passedCheckInTiny = val;
+	}
+	if (index === 3) {
+		lunchBreak = val;
 	}
 });
 
@@ -42,12 +47,21 @@ var nowMinsFraction = Math.round((nowMins / 60) * 100) / 100;
 var checkInCalc = checkInHours + checkInMinsFraction;
 var nowCalc = nowHours + nowMinsFraction;
 
-console.log("Checkin time: " + passedCheckInTiny + " --> " + checkInCalc);
-console.log("Current time: " + nowTiny + " --> " + nowCalc);
+console.log("");
+console.log("Checkin time : " + passedCheckInTiny + " --> " + checkInCalc);
+console.log("Current time : " + nowTiny + " --> " + nowCalc);
 
 //calculate the worked hours and the earned money
-var hoursWorked = Math.round((nowCalc - checkInCalc) * 100) / 100;
+var hoursWorkedNoLunch = (Math.round((nowCalc - checkInCalc) * 100) / 100).toFixed(2);
+
+//subtract lunch break
+var lunchBreakFraction = (Math.round((lunchBreak / 60) * 100) / 100).toFixed(2);
+var hoursWorked = (hoursWorkedNoLunch - lunchBreakFraction).toFixed(2);
+
 var earnedMoney = (hoursWorked * moneyPerHour).toFixed(2);
 
-console.log("Hours worked: " + hoursWorked);
-console.log("Earned money: " + earnedMoney + currency);
+console.log("Hours worked : " + hoursWorkedNoLunch + " Hours");
+console.log("Lunchbreak   : " + lunchBreakFraction + " Hours (" + lunchBreak + " Minutes)");
+console.log("Work - Lunch : " + hoursWorked + " Hours");
+console.log("Earned money : " + earnedMoney + currency + " ("+hoursWorked+" x "+moneyPerHour+")");
+console.log("");
