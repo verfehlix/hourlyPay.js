@@ -1,4 +1,5 @@
 var moneyPerHour = 13;
+var currency = "€";
 
 //get checkin time from user argument
 var passedCheckInTiny = "";
@@ -41,4 +42,4 @@ var hoursWorked = Math.round((nowCalc - checkInCalc) * 100) / 100;
 var earnedMoney = (hoursWorked * moneyPerHour).toFixed(2);
 
 console.log("Hours worked: " + hoursWorked);
-console.log("Earned money: " + earnedMoney + "€");
+console.log("Earned money: " + earnedMoney + currency);
