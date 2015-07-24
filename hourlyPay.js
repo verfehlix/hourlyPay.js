@@ -19,7 +19,13 @@ if (!passedCheckInTiny) {
 //calculate the current time
 var now = new Date();
 var nowHours = now.getHours();
+if(nowHours<10){
+	nowHours = 0 + "" + nowHours;
+}
 var nowMins = now.getMinutes();
+if(nowMins<10){
+	nowMins = 0 + "" + nowMins;
+}
 var nowTiny = nowHours + ":" + nowMins;
 
 //extrapolate hours and minutes from given checkin time
